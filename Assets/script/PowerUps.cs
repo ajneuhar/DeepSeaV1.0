@@ -8,10 +8,12 @@ public class PowerUps : MonoBehaviour {
 	public Player player;
 	public MoveBullet spear;
 	private int playerRevive = 10;
+	private Renderer powerUpR;
 
 
 	// Use this for initialization
 	void Start () {
+		powerUpR = GetComponent<Renderer>();
 		RandomPowerUp();
 
 		
@@ -54,15 +56,21 @@ public class PowerUps : MonoBehaviour {
 			player.SetUnTouchable(true);
 			yield return new WaitForSeconds(10f);
 			player.SetUnTouchable(false);
+			Destroy(this.gameObject);
 			break;
 		}
 	}
 
+	//TODO: 
 	void OnTriggerEnter2D (Collider2D other) {
 		string tag = other.tag;
-		if (tag == "Boat") {
+
+		if (tag == "Boat" && powerUpR.sortingOrder > 2) {
 			StartCoroutine(ActivatePowerUp());
 			transform.position = new Vector3(300f, 300f, 0f);
 		}
 	}
+
+
+	
 }

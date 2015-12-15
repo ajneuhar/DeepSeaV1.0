@@ -4,11 +4,12 @@ using System.Collections;
 public class Player : MonoBehaviour {
 
 	private int maxHealth = 100;
-	bool unTouchable = false;
+	bool unTouchable;
 
 	[System.Serializable]  
 	public class PlayerStats {
 		public int health = 100;
+
 	}
 
 	public static PlayerStats playerStats;
@@ -16,6 +17,7 @@ public class Player : MonoBehaviour {
 
 	void Start() {
 		playerStats = new PlayerStats();
+		unTouchable = false;
 	}
 
 	public void DamagePlayer (int damage) {

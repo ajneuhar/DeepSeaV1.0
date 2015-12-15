@@ -9,8 +9,7 @@ public class BoatMovement : MonoBehaviour {
 	public int damageToPlayer = 20;
 	public Transform front;
 	public Transform back;
-    public float yLimit;
-    public float xLimit;
+   
 
 	private Rigidbody2D rb;
  
@@ -25,8 +24,6 @@ public class BoatMovement : MonoBehaviour {
 	void Update () {
 		Vector3 dir;
 
-        yLimit = transform.position.y;
-        xLimit = transform.position.x;
 
 		if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) {
 			transform.Rotate(Vector3.forward * boatSpeed);
@@ -45,7 +42,7 @@ public class BoatMovement : MonoBehaviour {
 		}
 
         // making sure that the player won't be able to get out of the main screen.
-        if (yLimit > 65 || yLimit < -65 || xLimit > 100 || xLimit < -100)
+		if (transform.position.y > 65 || transform.position.y < -65 || transform.position.x > 100 || transform.position.x < -100)
         {
 			StartCoroutine(OutOfBounds());	   
         }
@@ -62,7 +59,7 @@ public class BoatMovement : MonoBehaviour {
 		player.SetUnTouchable(true);
 		for (int i = 0; i < 6; i++) {
 			boatR.enabled = !boatR.enabled;
-			playerR.enabled = !playerR.enabled;
+			//playerR.enabled = !playerR.enabled;
 			yield return new WaitForSeconds(0.3f);
 		}
 			
@@ -70,12 +67,19 @@ public class BoatMovement : MonoBehaviour {
 	}
 
 	// Activate functhion when something touched the boat.
+	// Dosen't damage player if enemy is in layer 0.
 	void OnTriggerEnter2D (Collider2D other) {
 
 		string tag = other.tag;
+
 		if (tag == "enemy1" || tag == "enemy2" || tag == "enemy3" || tag == "enemy4" || tag == "enemy5") {
-			Debug.Log("Player Got Hit!!!!!!!!!");
-			player.DamagePlayer(damageToPlayer);
+
+			Renderer enemyR = other.GetComponent<Renderer>();
+			if(enemyR.sortingOrder >= 1) {
+				player.DamagePlayer(damageToPlayer);
+				Debug.Log("Player Got Hit!!!!!!!!!");
+			}
+
 		}
 	}
 }

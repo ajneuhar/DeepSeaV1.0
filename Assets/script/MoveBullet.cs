@@ -31,7 +31,7 @@ public class MoveBullet : MonoBehaviour {
 			SpriteRenderer sprite = enemy.GetComponent<SpriteRenderer>();
 			Debug.Log("layer is :      " + sprite.sortingOrder);
 
-			if (weaponHitLayer >= sprite.sortingOrder) {
+			if (weaponHitLayer <= sprite.sortingOrder) {
 				Destroy(this.gameObject);
 
 				if (enemy != null) {
