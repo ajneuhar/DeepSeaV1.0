@@ -37,6 +37,7 @@ public class EnemyAI : MonoBehaviour {
 	// If doing a default path or pathfinder. 
 	private bool startSeeking = false;
 
+
 	private SpriteRenderer sprite;
 
 	void Start () {
@@ -46,19 +47,19 @@ public class EnemyAI : MonoBehaviour {
 
 
 	void Path0() {
-		iTween.MoveTo(this.gameObject ,iTween.Hash("path", iTweenPath.GetPath("enemyPath0"), "time", 10,
+		iTween.MoveTo(this.gameObject ,iTween.Hash("path", iTweenPath.GetPath("enemyPath0"), "speed", 50,
 		                                           "easetype", iTween.EaseType.easeInOutSine,  "onComplete", "Path1"));
 	}
 
 	void Path1() {
 		sprite.sortingOrder++;
-		iTween.MoveTo(this.gameObject ,iTween.Hash("path", iTweenPath.GetPath(ChoosePath()), "time", 10, 
+		iTween.MoveTo(this.gameObject ,iTween.Hash("path", iTweenPath.GetPath(ChoosePath()), "speed", 50, 
 		                                           "easetype", iTween.EaseType.easeInOutSine, "onComplete", "SeekPlayer"));
 
 	}
 
 	string ChoosePath () {
-		switch (Random.Range(0, 4)) {
+		switch (Random.Range(0, 5)) {
 		case(0): 
 			return "enemyPath1";
 		case(1):
@@ -73,8 +74,8 @@ public class EnemyAI : MonoBehaviour {
 		}
 	}
 
-	void SeekPlayer () {
-		sprite.sortingOrder++;
+
+	public void SeekPlayer () {
 		seeker = GetComponent<Seeker>();
 		rb = GetComponent<Rigidbody2D>();
 		
