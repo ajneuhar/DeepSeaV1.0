@@ -52,7 +52,9 @@ public class EnemyAI : MonoBehaviour {
 	}
 
 	void Path1() {
-		sprite.sortingOrder++;
+        // player and enemy collide and wont overlap.
+        GetComponent<BoxCollider2D>().isTrigger = false;
+        sprite.sortingOrder++;
 		iTween.MoveTo(this.gameObject ,iTween.Hash("path", iTweenPath.GetPath(ChoosePath()), "speed", 50, 
 		                                           "easetype", iTween.EaseType.easeInOutSine, "onComplete", "SeekPlayer"));
 
@@ -76,8 +78,6 @@ public class EnemyAI : MonoBehaviour {
 
 
 	public void SeekPlayer () {
-		// player and enemy collide and wont overlap.
-		GetComponent<BoxCollider2D>().isTrigger = false;
 		sprite.sortingOrder++;
 		seeker = GetComponent<Seeker>();
 		rb = GetComponent<Rigidbody2D>();
