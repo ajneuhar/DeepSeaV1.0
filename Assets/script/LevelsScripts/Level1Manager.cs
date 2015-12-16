@@ -11,11 +11,7 @@ public class Level1Manager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-<<<<<<< Updated upstream:Assets/script/Level1Manager.cs
 		levelOver = false;
-=======
-
->>>>>>> Stashed changes:Assets/script/LevelsScripts/Level1Manager.cs
 		GameManager.numOfEnemys = 1;
 		Instantiate(enemy1, new Vector3(0f, 50f, 0f), Quaternion.identity);
 		StartCoroutine(CreatePowerUp());
