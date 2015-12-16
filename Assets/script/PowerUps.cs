@@ -7,7 +7,7 @@ public class PowerUps : MonoBehaviour {
 	float powerUpTime;
 	public Player player;
 	public MoveBullet spear;
-	private int playerRevive = 10;
+	private int playerRevive = 20;
 	private Renderer powerUpR;
 
 

@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour {
 	public Text scoreText;
 	public static int score;
 	public GameObject enemy1;
+	public static int numOfEnemys;
 
 
 	public static void KillPlayer (Player player) {

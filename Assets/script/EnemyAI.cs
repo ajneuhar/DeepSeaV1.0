@@ -76,6 +76,7 @@ public class EnemyAI : MonoBehaviour {
 
 
 	public void SeekPlayer () {
+		sprite.sortingOrder++;
 		seeker = GetComponent<Seeker>();
 		rb = GetComponent<Rigidbody2D>();
 		

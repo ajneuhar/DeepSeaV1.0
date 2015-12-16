@@ -17,6 +17,7 @@ public class Enemy : MonoBehaviour {
 		enemyStats.health -= damage;
 		
 		if (enemyStats.health <= 0) {
+			GameManager.numOfEnemys--;
 			GameManager.KillEnemy(this);
 			AddScore();
 		} 
