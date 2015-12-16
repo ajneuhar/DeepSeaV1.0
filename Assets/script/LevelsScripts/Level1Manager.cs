@@ -11,7 +11,13 @@ public class Level1Manager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+<<<<<<< HEAD
 		levelOver = false;
+=======
+
+		levelOver = false;
+
+>>>>>>> origin/master
 		GameManager.numOfEnemys = 1;
 		Instantiate(enemy1, new Vector3(0f, 50f, 0f), Quaternion.identity);
 		StartCoroutine(CreatePowerUp());

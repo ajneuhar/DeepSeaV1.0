@@ -17,8 +17,6 @@ public class BoatMovement : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		rb = GetComponent<Rigidbody2D>();
-
-
 	}
 	
 	// Update is called once per frame
@@ -74,10 +72,11 @@ public class BoatMovement : MonoBehaviour {
 		string tag = other.gameObject.tag;
 
 		if (tag == "enemy1" || tag == "enemy2" || tag == "enemy3" || tag == "enemy4" || tag == "enemy5") {
-
+            Enemy enemy = other.gameObject.GetComponent<Enemy>();
 			Renderer enemyR = other.gameObject.GetComponent<Renderer>();
 			if(enemyR.sortingOrder >= 1) {
 				player.DamagePlayer(damageToPlayer);
+                enemy.EnemyTouchPlayer();
 				Debug.Log("Player Got Hit!!!!!!!!!");
 			}
 

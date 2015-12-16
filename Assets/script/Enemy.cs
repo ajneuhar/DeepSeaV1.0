@@ -25,7 +25,11 @@ public class Enemy : MonoBehaviour {
 
 	}
 
-
+    public void EnemyTouchPlayer ()   {
+        //TODO: kills the enemy when this function is called.
+        Debug.Log("need to kill enemy");
+        Destroy(this.gameObject);
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -39,7 +43,7 @@ public class Enemy : MonoBehaviour {
 	public void AddScore() {
 		string tagOfEnemy = this.tag;
 
-		switch(tagOfEnemy){
+		switch(tagOfEnemy) {
 		case("enemy1"):
 			GameManager.score += 5;
 			break;
