@@ -76,6 +76,8 @@ public class EnemyAI : MonoBehaviour {
 
 
 	public void SeekPlayer () {
+		// player and enemy collide and wont overlap.
+		GetComponent<BoxCollider2D>().isTrigger = false;
 		sprite.sortingOrder++;
 		seeker = GetComponent<Seeker>();
 		rb = GetComponent<Rigidbody2D>();

@@ -18,6 +18,7 @@ public class BoatMovement : MonoBehaviour {
 	void Start () {
 		rb = GetComponent<Rigidbody2D>();
 
+
 	}
 	
 	// Update is called once per frame
@@ -68,13 +69,13 @@ public class BoatMovement : MonoBehaviour {
 
 	// Activate functhion when something touched the boat.
 	// Dosen't damage player if enemy is in layer 0.
-	void OnTriggerEnter2D (Collider2D other) {
+	void OnCollisionEnter2D (Collision2D other) {
 
-		string tag = other.tag;
+		string tag = other.gameObject.tag;
 
 		if (tag == "enemy1" || tag == "enemy2" || tag == "enemy3" || tag == "enemy4" || tag == "enemy5") {
 
-			Renderer enemyR = other.GetComponent<Renderer>();
+			Renderer enemyR = other.gameObject.GetComponent<Renderer>();
 			if(enemyR.sortingOrder >= 1) {
 				player.DamagePlayer(damageToPlayer);
 				Debug.Log("Player Got Hit!!!!!!!!!");

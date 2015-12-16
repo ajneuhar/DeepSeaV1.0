@@ -5,6 +5,7 @@ public class PowerUps : MonoBehaviour {
 
 	int powerUp;
 	float powerUpTime;
+	public GameObject boat;
 	public Player player;
 	public MoveBullet spear;
 	private int playerRevive = 20;
@@ -13,10 +14,14 @@ public class PowerUps : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+	
 		powerUpR = GetComponent<Renderer>();
 		RandomPowerUp();
+	}
 
-		
+	void Update () {
+
+
 	}
 	
 	private void RandomPowerUp() {
@@ -61,15 +66,18 @@ public class PowerUps : MonoBehaviour {
 		}
 	}
 
-	//TODO: 
-	void OnTriggerEnter2D (Collider2D other) {
-		string tag = other.tag;
 
-		if (tag == "Boat" && powerUpR.sortingOrder > 2) {
-			StartCoroutine(ActivatePowerUp());
+	//TODO: 
+	void OnCollisionEnter2D (Collision2D other) {
+		string tag = other.gameObject.tag;
+
+		if (tag == "Boat" ) {
 			transform.position = new Vector3(300f, 300f, 0f);
+			StartCoroutine(ActivatePowerUp());
+
 		}
 	}
+
 
 
 	
