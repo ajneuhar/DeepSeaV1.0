@@ -24,9 +24,14 @@ public class Level1Manager : MonoBehaviour {
 			levelOver = true; 
 			//TODO: move to next level.
 			Debug.Log("Next level Bitch!!!!!!!!!");
-			levelButton.active = true; 
+			StartCoroutine (LevelChange());
 		}
 	
+	}
+
+	IEnumerator LevelChange () {
+		yield return new WaitForSeconds (1f);
+		levelButton.active = true;
 	}
 
 
