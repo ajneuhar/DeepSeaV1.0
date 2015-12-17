@@ -1,10 +1,13 @@
 fileFormatVersion: 2
 guid: 1c7f9275b674e46d9b5156374fac1d7d
-timeCreated: 1450206098
+timeCreated: 1450352458
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - enemy1: {instanceID: 0}
+  - levelButton: {instanceID: 0}
+  - spear: {fileID: 11412946, guid: 63681b8f080494132ae380c4c2f52f15, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

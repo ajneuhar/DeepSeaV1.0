@@ -3,13 +3,9 @@ using System.Collections;
 
 public class MoveBullet : MonoBehaviour {
 
-	public int weaponHitLayer = 2;
-	public int damageToEnemy = 5;
+	public int weaponHitLayer;
+	public int damageToEnemy;
 	public int moveSpeed = 230; 
-
-
-
-
 
 
 
@@ -44,22 +40,22 @@ public class MoveBullet : MonoBehaviour {
 
 
 	// Update the wepon damage and what layer he can hit.
-	// layer 3 is the shallowest.
-	// layer 1 is the deepest.
+	// layer 2 is the shallowest.
+	// layer 0 is the deepest.
 	public void WeaponUpdate(int weaponType){
 		switch(weaponType) {
 		case(1) :
-			weaponHitLayer = 2;
+			weaponHitLayer = 1;
 			damageToEnemy = 5;
 			return;
 			
 		case(2) :
-			weaponHitLayer = 2;
+			weaponHitLayer = 1;
 			damageToEnemy = 10;
 			return;
 			
 		case(3) :
-			weaponHitLayer = 1;
+			weaponHitLayer = 0;
 			damageToEnemy = 10;
 			return;
 		}

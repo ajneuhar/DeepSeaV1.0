@@ -10,13 +10,17 @@ public class LevelManager : MonoBehaviour {
 	public static bool levelOver; 
 	private int levelNumOfEnemys;
 
+    // our spear
+    public MoveBullet spear;
 
-	void Start () {
+    // Use this for initialization
+    void Start () {
 		levelNumOfEnemys = 1;
 		NextLevel();
+        // setting the spear to the regular spear (layers: 1-2 damage: 5)
+        spear.WeaponUpdate(1); 
 	}
 
-	// Use this for initialization
 	void NextLevel () {
 		Debug.Log("Number of enemies" + levelNumOfEnemys);
 		levelOver = false;
@@ -28,10 +32,9 @@ public class LevelManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (GameManager.numOfEnemys == 0 && !levelOver) {
-			//TODO: move to next level.
-			Debug.Log("Next level Bitch!!!!!!!!!");
 			levelOver = true;
-			StartCoroutine (LevelChange());
+            Debug.Log("Next level Bitch!!!!!!!!!");
+            StartCoroutine (LevelChange());
 		}
 	}
 

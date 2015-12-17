@@ -70,5 +70,4 @@ public class SpearGun : MonoBehaviour {
 	void shootBullet () {
 		Instantiate (spear, firepoint.position, firepoint.rotation);
 	}
-
 }
