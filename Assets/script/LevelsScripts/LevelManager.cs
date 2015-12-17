@@ -4,6 +4,8 @@ using System.Collections;
 public class LevelManager : MonoBehaviour {
 
 	public GameObject enemy1;
+	public GameObject enemy2;
+	public GameObject enemy3;
 	public GameObject levelButton;
 	public static bool levelOver; 
 	private int levelNumOfEnemys;
@@ -31,7 +33,6 @@ public class LevelManager : MonoBehaviour {
 			levelOver = true;
 			StartCoroutine (LevelChange());
 		}
-
 	}
 
 	IEnumerator CreateEnemys() {
@@ -52,7 +53,6 @@ public class LevelManager : MonoBehaviour {
 		yield return new WaitForSeconds (1f);
 		levelNumOfEnemys++;
 		levelButton.active = true;
-
 	}
 
 

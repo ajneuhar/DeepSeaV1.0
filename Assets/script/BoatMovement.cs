@@ -6,7 +6,7 @@ public class BoatMovement : MonoBehaviour {
 	public int boatSpeed = -2;
 	public int boatSpeedMove = 10;
 	public Player player;
-	public int damageToPlayer = 20;
+	public int damageToPlayer;
 	public Transform front;
 	public Transform back;
    
@@ -65,11 +65,25 @@ public class BoatMovement : MonoBehaviour {
 		player.SetUnTouchable(false);
 	}
 
+
+
 	// Activate functhion when something touched the boat.
 	// Dosen't damage player if enemy is in layer 0.
 	void OnCollisionEnter2D (Collision2D other) {
 
 		string tag = other.gameObject.tag;
+
+		switch(tag) {
+		case("enemy1"):
+			damageToPlayer = 5;
+			break;
+		case("enemy2"):
+			damageToPlayer = 10;
+			break;
+		case("enemy3"):
+			damageToPlayer = 15;
+			break;
+		}
 
 		if (tag == "enemy1" || tag == "enemy2" || tag == "enemy3" || tag == "enemy4" || tag == "enemy5") {
             Enemy enemy = other.gameObject.GetComponent<Enemy>();

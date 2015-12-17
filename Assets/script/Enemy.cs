@@ -7,7 +7,7 @@ public class Enemy : MonoBehaviour {
 	
 	[System.Serializable]  
 	public class EnemyStats {
-		public int health = 3;
+		public int health = 5;
 	}
 	
 	public EnemyStats enemyStats = new EnemyStats();
@@ -34,11 +34,7 @@ public class Enemy : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
-		// When to damage the player. when enemy hits me - rigidbody. 
-		if (Input.GetKeyDown(KeyCode.Space)) {
-			//DamagePlayer(100);
-		}
+
 	}
 
 	public void AddScore() {
