@@ -80,7 +80,6 @@ public class BoatMovement : MonoBehaviour {
 				player.DamagePlayer(damageToPlayer);
 				Debug.Log("Player Got Hit!!!!!!!!!");
 			}
-
 		}
 	}
 }
