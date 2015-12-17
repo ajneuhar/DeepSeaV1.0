@@ -28,6 +28,7 @@ public class Enemy : MonoBehaviour {
     public void EnemyTouchPlayer ()   {
         //TODO: kills the enemy when this function is called.
         Debug.Log("need to kill enemy");
+		GameManager.numOfEnemys--;
         Destroy(this.gameObject);
     }
 	
@@ -45,7 +46,7 @@ public class Enemy : MonoBehaviour {
 
 		switch(tagOfEnemy) {
 		case("enemy1"):
-			GameManager.score += 5;
+			GameManager.score += 100;
 			break;
 		case("enemy2"):
 			GameManager.score += 17;
