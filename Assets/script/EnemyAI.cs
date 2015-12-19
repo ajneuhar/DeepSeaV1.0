@@ -47,7 +47,7 @@ public class EnemyAI : MonoBehaviour {
 
 
 	void Path0() {
-		iTween.MoveTo(this.gameObject ,iTween.Hash("path", iTweenPath.GetPath("enemyPath0"), "speed", 50,
+		iTween.MoveTo(this.gameObject ,iTween.Hash("path", iTweenPath.GetPath(LevelManager.startPath), "speed", 50,
 		                                           "easetype", iTween.EaseType.easeInOutSine,  "onComplete", "Path1"));
 	}
 
@@ -55,11 +55,12 @@ public class EnemyAI : MonoBehaviour {
         // player and enemy collide and wont overlap.
         GetComponent<BoxCollider2D>().isTrigger = false;
         sprite.sortingOrder++;
-		iTween.MoveTo(this.gameObject ,iTween.Hash("path", iTweenPath.GetPath(ChoosePath()), "speed", 50, 
+		iTween.MoveTo(this.gameObject ,iTween.Hash("path", iTweenPath.GetPath(LevelManager.secondPath), "speed", 50, 
 		                                           "easetype", iTween.EaseType.easeInOutSine, "onComplete", "SeekPlayer"));
 
 	}
 
+	/*
 	string ChoosePath () {
 		switch (Random.Range(0, 5)) {
 		case(0): 
@@ -74,7 +75,7 @@ public class EnemyAI : MonoBehaviour {
 			return "enemyPath5";
 
 		}
-	}
+	}*/
 
 
 	public void SeekPlayer () {

@@ -7,8 +7,8 @@ public class PlayerMovement : MonoBehaviour {
 	//public GameObject bullet;
 	private int speed = -2;
 	private int bulletSpeed = 10;
-	public Transform bulletSpawnT;
 
+	
 
 	// Use this for initialization
 	void Start () {

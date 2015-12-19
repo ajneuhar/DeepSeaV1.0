@@ -9,6 +9,8 @@ public class LevelManager : MonoBehaviour {
 	public GameObject levelButton;
 	public static bool levelOver; 
 	private int levelNumOfEnemys;
+	public static string startPath;
+	public static string secondPath;
 
     // our spear
     public MoveBullet spear;
@@ -44,11 +46,34 @@ public class LevelManager : MonoBehaviour {
 			yield return new WaitForSeconds(3f);
 		}
 	}
-	
+
+	// Picks the coordinates according to the path for the enemy. 
 	public Vector3 VectorStartEnemy() {
-		float x = Random.Range(-100,100);
-		float y = Random.Range(-85,85);
-		return new Vector3(x, y, 0f);
+		switch (Random.Range(0, 4)) {
+		case(0):
+			startPath = "enemyPath0";
+			secondPath = "enemyPath1";
+			return new Vector3(-1f, 93f, 0f);
+		case(1):
+			startPath = "enemyPath01";
+			secondPath = "enemyPath2";
+			return new Vector3(81f, 92f, 0f);
+		case(2):
+			startPath = "enemyPath02";
+			secondPath = "enemyPath3";
+			return new Vector3(-25f, -91f, 0f);
+		default:
+			startPath = "enemyPath03";
+			switch(Random.Range (0, 2)) {
+			case(0):
+				secondPath = "enemyPath4";
+				break;
+			case(1):
+				secondPath = "enemyPath5";
+				break;
+			}
+			return new Vector3(-148f, -28f, 0f);
+		}
 	}
 	
 
