@@ -8,10 +8,10 @@ public class GameManager : MonoBehaviour {
 
 	public Text scoreText;
 	public static int score;
-	public GameObject enemy1;
 	public static int numOfEnemys;
 	public GameObject powerUp;
 	int givePowerUp; 
+
 
 
 
@@ -25,7 +25,6 @@ public class GameManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-
 		// Initilizae score.
 		score = 0;
 		givePowerUp = 100;

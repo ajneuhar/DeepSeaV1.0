@@ -4,7 +4,7 @@ using System.Collections;
 public class Player : MonoBehaviour {
 
 	private int maxHealth = 100;
-	bool unTouchable;
+	bool unTouchable = false;
 
 	[System.Serializable]  
 	public class PlayerStats {
@@ -18,11 +18,13 @@ public class Player : MonoBehaviour {
 	void Start() {
 		playerStats = new PlayerStats();
 		unTouchable = false;
+		Debug.Log("is player untouchable " + unTouchable);
+	
 	}
 
 	public void DamagePlayer (int damage) {
 		if (unTouchable) {
-			Debug.Log("Player UnTouchable mother fucker!!!!!!!");
+			Debug.Log("Player UnTouchable mother fucker!!!!!!! " + unTouchable);
 			return;
 		}
 
@@ -47,13 +49,5 @@ public class Player : MonoBehaviour {
 	public bool GetUnTouchable() {
 		return unTouchable;
 	}
-	
-	// Update is called once per frame
-	void Update () {
 
-		// When to damage the player. when enemy hits me - rigidbody. 
-		if (Input.GetKeyDown(KeyCode.Space)) {
-			DamagePlayer(100);
-		}
-	}
 }

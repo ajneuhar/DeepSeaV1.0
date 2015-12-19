@@ -11,11 +11,7 @@ public class CanvasManager : MonoBehaviour {
 	void Start () {
 		canvasOne.active = true;
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
 	
 	public void onClickStartButton() {
 		Application.LoadLevel("MainScene");

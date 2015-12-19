@@ -41,20 +41,30 @@ public class EnemyAI : MonoBehaviour {
 	private SpriteRenderer sprite;
 
 	void Start () {
+		target = GameObject.Find("Boat").GetComponent<Transform>();
+		StartCoroutine(RandomLayerUp());
 		sprite = GetComponent<SpriteRenderer>();
 		Path0();
+	}
+
+	IEnumerator RandomLayerUp() { 
+		yield return new WaitForSeconds(Random.Range(6, 11));
+		sprite.sortingOrder++;
+		// player and enemy collide and wont overlap.
+		GetComponent<BoxCollider2D>().isTrigger = false;
+		yield return new WaitForSeconds(Random.Range(6, 11));
+		sprite.sortingOrder++;
 	}
 
 
 	void Path0() {
 		iTween.MoveTo(this.gameObject ,iTween.Hash("path", iTweenPath.GetPath(LevelManager.startPath), "speed", 50,
-		                                           "easetype", iTween.EaseType.easeInOutSine,  "onComplete", "Path1"));
+		                                           "easetype", iTween.EaseType.easeInOutSine,  "onComplete", "SeekPlayer"));
 	}
 
 	void Path1() {
         // player and enemy collide and wont overlap.
-        GetComponent<BoxCollider2D>().isTrigger = false;
-        sprite.sortingOrder++;
+        // GetComponent<BoxCollider2D>().isTrigger = false;
 		iTween.MoveTo(this.gameObject ,iTween.Hash("path", iTweenPath.GetPath(LevelManager.secondPath), "speed", 50, 
 		                                           "easetype", iTween.EaseType.easeInOutSine, "onComplete", "SeekPlayer"));
 
@@ -79,7 +89,6 @@ public class EnemyAI : MonoBehaviour {
 
 
 	public void SeekPlayer () {
-		sprite.sortingOrder++;
 		seeker = GetComponent<Seeker>();
 		rb = GetComponent<Rigidbody2D>();
 		

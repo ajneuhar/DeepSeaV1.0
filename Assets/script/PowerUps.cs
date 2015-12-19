@@ -18,12 +18,8 @@ public class PowerUps : MonoBehaviour {
 		powerUpR = GetComponent<Renderer>();
 		RandomPowerUp();
 	}
-
-	void Update () {
-
-
-	}
 	
+
 	private void RandomPowerUp() {
 
 		powerUp = Random.Range(1, 5);
@@ -32,13 +28,14 @@ public class PowerUps : MonoBehaviour {
 
 	IEnumerator ActivatePowerUp() {
 		switch(powerUp) {
+	
 		case(1) :
 			Debug.Log("got life");
 			player.RevivePlayer(playerRevive);
 			Destroy(this.gameObject);
 			break;
+		
 		case(2) :
-
 			spear.WeaponUpdate(2);
 			Debug.Log("Update Weapon To ==============>" + spear.weaponHitLayer + "  " + spear.damageToEnemy);
 			Debug.Log(Time.time);
@@ -57,10 +54,11 @@ public class PowerUps : MonoBehaviour {
 			break;
 
 		case(4) : 
-			Debug.Log("Got Untouchable");
 			player.SetUnTouchable(true);
+			Debug.Log("is player untouchable =====> " + player.GetUnTouchable());
 			yield return new WaitForSeconds(10f);
 			player.SetUnTouchable(false);
+			Debug.Log("is player untouchable =====> " + player.GetUnTouchable());
 			Destroy(this.gameObject);
 			break;
 		}

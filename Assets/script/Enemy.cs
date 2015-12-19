@@ -31,27 +31,20 @@ public class Enemy : MonoBehaviour {
 		GameManager.numOfEnemys--;
         Destroy(this.gameObject);
     }
-	
-	// Update is called once per frame
-	void Update () {
 
-	}
 
 	public void AddScore() {
 		string tagOfEnemy = this.tag;
 
 		switch(tagOfEnemy) {
 		case("enemy1"):
-			GameManager.score += 100;
+			GameManager.score += 16;
 			break;
 		case("enemy2"):
-			GameManager.score += 17;
+			GameManager.score += 23;
 			break;
 		case("enemy3"):
-			GameManager.score += 39;
-			break;
-		case("enemy4"):
-			GameManager.score += 52;
+			GameManager.score += 42;
 			break;
 			
 		}
