@@ -9,13 +9,11 @@ public class PowerUps : MonoBehaviour {
 	public Player player;
 	public MoveBullet spear;
 	private int playerRevive = 20;
-	private Renderer powerUpR;
+
 
 
 	// Use this for initialization
 	void Start () {
-	
-		powerUpR = GetComponent<Renderer>();
 		RandomPowerUp();
 	}
 	

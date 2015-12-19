@@ -37,8 +37,10 @@ public class Player : MonoBehaviour {
 
 	public void RevivePlayer (int revive) {
 
-		if (playerStats.health <= maxHealth) {
+		if (playerStats.health + revive <= maxHealth) {
 			playerStats.health += revive;
+		} else {
+			playerStats.health = maxHealth;
 		}
 	}
 
