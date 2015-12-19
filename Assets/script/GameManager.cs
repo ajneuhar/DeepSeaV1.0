@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour {
 	int givePowerUp; 
 
 
+
 	public static void KillPlayer (Player player) {
 		Debug.Log ("Player has Been Killed");
 	}
@@ -24,6 +25,7 @@ public class GameManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+
 		// Initilizae score.
 		score = 0;
 		givePowerUp = 100;
@@ -43,6 +45,8 @@ public class GameManager : MonoBehaviour {
 		yield return new WaitForSeconds(2f);
 		Instantiate(powerUp, new Vector3(13f, 50f, 0f), Quaternion.identity);
 	}
+
+
 
 
 }

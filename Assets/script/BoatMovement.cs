@@ -9,6 +9,10 @@ public class BoatMovement : MonoBehaviour {
 	public int damageToPlayer;
 	public Transform front;
 	public Transform back;
+
+	public Sprite redBoat;
+	public Sprite regBoat;
+	SpriteRenderer boatR;
    
 
 	private Rigidbody2D rb;
@@ -16,6 +20,7 @@ public class BoatMovement : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		boatR = GetComponent<SpriteRenderer>();
 		rb = GetComponent<Rigidbody2D>();
 	}
 	
@@ -49,18 +54,19 @@ public class BoatMovement : MonoBehaviour {
 	}
 
 	IEnumerator OutOfBounds() {
-		Renderer boatR = GetComponent<Renderer>();
-		Renderer playerR = player.GetComponent<Renderer>();
 
 		transform.position = new Vector3 (0f, 0f, 0f);
 		rb.velocity = new Vector3(0f, 0f, 0f);
 		player.DamagePlayer(damageToPlayer);
 		player.SetUnTouchable(true);
-		for (int i = 0; i < 6; i++) {
-			boatR.enabled = !boatR.enabled;
-			//playerR.enabled = !playerR.enabled;
+
+		for (int i = 0; i < 3; i++) {
+			boatR.sprite = redBoat;
+			yield return new WaitForSeconds(0.3f);
+			boatR.sprite = regBoat;
 			yield return new WaitForSeconds(0.3f);
 		}
+
 			
 		player.SetUnTouchable(false);
 	}
@@ -75,13 +81,13 @@ public class BoatMovement : MonoBehaviour {
 
 		switch(tag) {
 		case("enemy1"):
-			damageToPlayer = 5;
-			break;
-		case("enemy2"):
 			damageToPlayer = 10;
 			break;
+		case("enemy2"):
+			damageToPlayer = 20;
+			break;
 		case("enemy3"):
-			damageToPlayer = 15;
+			damageToPlayer = 30;
 			break;
 		}
 
@@ -92,7 +98,19 @@ public class BoatMovement : MonoBehaviour {
 				player.DamagePlayer(damageToPlayer);
                 enemy.EnemyTouchPlayer();
 				Debug.Log("Player Got Hit!!!!!!!!!");
+				if(!player.GetUnTouchable()) {
+					StartCoroutine(BlinkBoat());
+				}
 			}
+		}
+	}
+
+	IEnumerator BlinkBoat() {
+		for (int i = 0; i < 3; i++) {
+			boatR.sprite = redBoat;
+			yield return new WaitForSeconds(0.3f);
+			boatR.sprite = regBoat;
+			yield return new WaitForSeconds(0.3f);
 		}
 	}
 }

@@ -21,7 +21,7 @@ public class Player : MonoBehaviour {
 	}
 
 	public void DamagePlayer (int damage) {
-		if (unTouchable){
+		if (unTouchable) {
 			Debug.Log("Player UnTouchable mother fucker!!!!!!!");
 			return;
 		}
@@ -42,6 +42,10 @@ public class Player : MonoBehaviour {
 
 	public void SetUnTouchable(bool a) {
 		unTouchable = a;
+	}
+
+	public bool GetUnTouchable() {
+		return unTouchable;
 	}
 	
 	// Update is called once per frame
