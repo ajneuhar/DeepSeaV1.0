@@ -54,14 +54,12 @@ public class BoatMovement : MonoBehaviour {
 			rb.AddForce(dir);
 		}*/
 
-        // making sure that the player won't be able to get out of the main screen.
-		if (transform.position.y > 65 || transform.position.y < -65 || transform.position.x > 100 || transform.position.x < -100)
-        {
-			audioSource.PlayOneShot(boatOutOfBounds, 0.5f);
-			StartCoroutine(OutOfBounds());	   
-        }
+      
 
 	}
+
+
+
 
 	IEnumerator OutOfBounds() {
 
@@ -113,6 +111,8 @@ public class BoatMovement : MonoBehaviour {
 					StartCoroutine(BlinkBoat());
 				}
 			}
+		} else if (tag == "wall") {
+			rb.velocity = -rb.velocity;
 		}
 	}
 
