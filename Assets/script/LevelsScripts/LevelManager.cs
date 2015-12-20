@@ -20,7 +20,7 @@ public class LevelManager : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-		level = 1;
+		level = 8;
 		CalcNextLevelEnemys();
 		NextLevel();
         // setting the spear to the regular spear (layers: 1-2 damage: 5)
@@ -73,30 +73,39 @@ public class LevelManager : MonoBehaviour {
 
 	// Picks the coordinates according to the path for the enemy. 
 	public Vector3 VectorStartEnemy() {
-		switch (Random.Range(0, 4)) {
+
+		float posX = Random.Range(-150, 151);
+		float posY = Random.Range(-100, 101);
+		Vector3 startSpot = new Vector3(posX, posY, 0f);
+
+		switch (Random.Range(0, 10)) {
 		case(0):
 			startPath = "enemyPath0";
-			secondPath = "enemyPath1";
-			return new Vector3(-1f, 93f, 0f);
+			return startSpot;
 		case(1):
-			startPath = "enemyPath01";
-			secondPath = "enemyPath2";
-			return new Vector3(81f, 92f, 0f);
+			startPath = "enemyPath1";
+			return startSpot;
 		case(2):
-			startPath = "enemyPath02";
-			secondPath = "enemyPath3";
-			return new Vector3(-25f, -91f, 0f);
+			startPath = "enemyPath2";
+			return startSpot;
+		case(3):
+			startPath = "enemyPath3";
+			return startSpot;
+		case(4):
+			startPath = "enemyPath4";
+			return startSpot;
+		case(5):
+			startPath = "enemyPath5";
+			return startSpot;
+		case(6):
+			startPath = "enemyPath6";
+			return startSpot;
+		case(7):
+			startPath = "enemyPath7";
+			return startSpot;
 		default:
-			startPath = "enemyPath03";
-			switch(Random.Range (0, 2)) {
-			case(0):
-				secondPath = "enemyPath4";
-				break;
-			case(1):
-				secondPath = "enemyPath5";
-				break;
-			}
-			return new Vector3(-148f, -28f, 0f);
+			startPath = "enemyPath8";
+			return startSpot;
 		}
 	}
 	

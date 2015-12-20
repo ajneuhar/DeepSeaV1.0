@@ -6,8 +6,14 @@ public class MoveBullet : MonoBehaviour {
 	public int weaponHitLayer;
 	public int damageToEnemy;
 	public int moveSpeed = 230; 
-
-
+	SpriteRenderer spearR;
+	public Sprite regSpear;
+	public Sprite expSpear;
+	public Sprite deepSpear;
+	
+	void Start () {
+		spearR = GetComponent<SpriteRenderer>();
+	}
 
 	// Update is called once per frame
 	void Update () {
@@ -47,16 +53,19 @@ public class MoveBullet : MonoBehaviour {
 		case(1) :
 			weaponHitLayer = 1;
 			damageToEnemy = 5;
+			spearR.sprite = regSpear; 
 			return;
 			
 		case(2) :
 			weaponHitLayer = 1;
 			damageToEnemy = 10;
+			spearR.sprite = expSpear; 
 			return;
 			
 		case(3) :
 			weaponHitLayer = 0;
 			damageToEnemy = 10;
+			spearR.sprite = deepSpear; 
 			return;
 		}
 	}

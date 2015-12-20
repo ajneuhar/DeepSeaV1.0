@@ -62,13 +62,14 @@ public class EnemyAI : MonoBehaviour {
 		                                           "easetype", iTween.EaseType.easeInOutSine,  "onComplete", "SeekPlayer"));
 	}
 
+	/*
 	void Path1() {
         // player and enemy collide and wont overlap.
         // GetComponent<BoxCollider2D>().isTrigger = false;
 		iTween.MoveTo(this.gameObject ,iTween.Hash("path", iTweenPath.GetPath(LevelManager.secondPath), "speed", 50, 
 		                                           "easetype", iTween.EaseType.easeInOutSine, "onComplete", "SeekPlayer"));
 
-	}
+	}*/
 
 	/*
 	string ChoosePath () {
