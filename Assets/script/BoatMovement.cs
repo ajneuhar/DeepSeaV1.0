@@ -13,6 +13,11 @@ public class BoatMovement : MonoBehaviour {
 	public Sprite redBoat;
 	public Sprite regBoat;
 	SpriteRenderer boatR;
+
+	AudioSource audioSource;
+	public AudioClip boatOutOfBounds;
+	public AudioClip boatHitByEnemy;
+	public AudioClip death;
    
 
 	private Rigidbody2D rb;
@@ -21,6 +26,7 @@ public class BoatMovement : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		boatR = GetComponent<SpriteRenderer>();
+		audioSource = GetComponent<AudioSource>();
 		rb = GetComponent<Rigidbody2D>();
 	}
 	
@@ -48,6 +54,7 @@ public class BoatMovement : MonoBehaviour {
         // making sure that the player won't be able to get out of the main screen.
 		if (transform.position.y > 65 || transform.position.y < -65 || transform.position.x > 100 || transform.position.x < -100)
         {
+			audioSource.PlayOneShot(boatOutOfBounds, 0.5f);
 			StartCoroutine(OutOfBounds());	   
         }
 
@@ -95,6 +102,7 @@ public class BoatMovement : MonoBehaviour {
             Enemy enemy = other.gameObject.GetComponent<Enemy>();
 			Renderer enemyR = other.gameObject.GetComponent<Renderer>();
 			if(enemyR.sortingOrder >= 1) {
+				audioSource.PlayOneShot(boatHitByEnemy, 0.5f);
 				player.DamagePlayer(damageToPlayer);
                 enemy.EnemyTouchPlayer();
 				Debug.Log("Player Got Hit!!!!!!!!!");
@@ -112,5 +120,9 @@ public class BoatMovement : MonoBehaviour {
 			boatR.sprite = regBoat;
 			yield return new WaitForSeconds(0.3f);
 		}
+	}
+
+	public static void PlayDeathSound () {
+		audioSource.PlayOneShot(death, 0.5f);
 	}
 }

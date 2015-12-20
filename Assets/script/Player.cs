@@ -6,11 +6,13 @@ public class Player : MonoBehaviour {
 	private int maxHealth = 100;
 	bool unTouchable = false;
 
+
 	[System.Serializable]  
 	public class PlayerStats {
 		public int health = 100;
 
 	}
+
 
 	public static PlayerStats playerStats;
 
@@ -31,6 +33,7 @@ public class Player : MonoBehaviour {
 		playerStats.health -= damage;
 
 		if (playerStats.health <= 0) {
+			BoatMovement.PlayDeathSound();
 			GameManager.KillPlayer(this);
 		}
 	}

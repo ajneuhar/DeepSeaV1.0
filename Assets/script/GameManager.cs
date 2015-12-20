@@ -10,21 +10,15 @@ public class GameManager : MonoBehaviour {
 	public static int score;
 	public static int numOfEnemys;
 	public GameObject powerUp;
-	int givePowerUp; 
+	int givePowerUp;
 
-
-
-
-	public static void KillPlayer (Player player) {
-		Debug.Log ("Player has Been Killed");
-	}
-
-	public static void KillEnemy (Enemy enemy) {
-		Destroy (enemy.gameObject);
-	}
+	//AudioSource audioSource;
+	//public AudioClip death;
+	
 
 	// Use this for initialization
 	void Start () {
+		//audioSource = GetComponent<AudioSource>();
 		// Initilizae score.
 		score = 0;
 		givePowerUp = 100;
@@ -37,6 +31,15 @@ public class GameManager : MonoBehaviour {
 			StartCoroutine(CreatePowerUp());
 			givePowerUp += 200;
 		}
+	}
+
+	public static void KillPlayer (Player player) {
+		Debug.Log ("Player has Been Killed");
+		
+	}
+	
+	public static void KillEnemy (Enemy enemy) {
+		Destroy (enemy.gameObject);
 	}
 
 
