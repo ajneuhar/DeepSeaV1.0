@@ -1,10 +1,13 @@
 fileFormatVersion: 2
 guid: 62ac95039fd284d439c2eaa080d8a4ff
-timeCreated: 1449332474
+timeCreated: 1450604365
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - regSpear: {fileID: 21300000, guid: a10ab5cd983a54320ba53e0e0fd168f9, type: 3}
+  - expSpear: {fileID: 21300000, guid: 597ae787bc52d4b45b3f73e0216f8d24, type: 3}
+  - deepSpear: {fileID: 21300000, guid: bde05b334b4f64d5ca58bd74e03de128, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

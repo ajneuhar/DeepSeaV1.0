@@ -21,7 +21,6 @@ public class PowerUps : MonoBehaviour {
 	private void RandomPowerUp() {
 
 		powerUp = Random.Range(1, 5);
-		powerUp = 2;
 		powerUpTime = Random.Range(20, 31);
 	}
 

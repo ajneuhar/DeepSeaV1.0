@@ -23,9 +23,10 @@ public class LevelManager : MonoBehaviour {
 		level = 8;
 		CalcNextLevelEnemys();
 		NextLevel();
-        // setting the spear to the regular spear (layers: 1-2 damage: 5)
-        spear.WeaponUpdate(1); 
+		// setting the spear to the regular spear (layers: 1-2 damage: 5)
+		//spear.WeaponUpdate(1);
 	}
+
 
 	void NextLevel () {
 		levelOver = false; 

@@ -6,13 +6,15 @@ public class MoveBullet : MonoBehaviour {
 	public int weaponHitLayer;
 	public int damageToEnemy;
 	public int moveSpeed = 230; 
-	SpriteRenderer spearR;
+
 	public Sprite regSpear;
 	public Sprite expSpear;
 	public Sprite deepSpear;
+	SpriteRenderer spearR;
 	
 	void Start () {
-		spearR = GetComponent<SpriteRenderer>();
+		spearR = this.GetComponent<SpriteRenderer>();
+		WeaponUpdate(1);
 	}
 
 	// Update is called once per frame
