@@ -33,7 +33,6 @@ public class Player : MonoBehaviour {
 		playerStats.health -= damage;
 
 		if (playerStats.health <= 0) {
-			BoatMovement.PlayDeathSound();
 			GameManager.KillPlayer(this);
 		}
 	}

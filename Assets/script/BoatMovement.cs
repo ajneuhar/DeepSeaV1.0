@@ -121,8 +121,5 @@ public class BoatMovement : MonoBehaviour {
 			yield return new WaitForSeconds(0.3f);
 		}
 	}
-
-	public static void PlayDeathSound () {
-		audioSource.PlayOneShot(death, 0.5f);
-	}
+	
 }
