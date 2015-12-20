@@ -14,11 +14,7 @@ public class BoatMovement : MonoBehaviour {
 	public Sprite regBoat;
 	SpriteRenderer boatR;
 
-	AudioSource audioSource;
-	public AudioClip boatOutOfBounds;
-	public AudioClip boatHitByEnemy;
-	public AudioClip death;
-   
+	public static int counter;
 
 	private Rigidbody2D rb;
  
@@ -26,8 +22,8 @@ public class BoatMovement : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		boatR = GetComponent<SpriteRenderer>();
-		audioSource = GetComponent<AudioSource>();
 		rb = GetComponent<Rigidbody2D>();
+		counter = 0;
 
 	}
 	
@@ -103,7 +99,7 @@ public class BoatMovement : MonoBehaviour {
             Enemy enemy = other.gameObject.GetComponent<Enemy>();
 			Renderer enemyR = other.gameObject.GetComponent<Renderer>();
 			if(enemyR.sortingOrder >= 1) {
-				audioSource.PlayOneShot(boatHitByEnemy, 0.5f);
+				counter++;
 				player.DamagePlayer(damageToPlayer);
                 enemy.EnemyTouchPlayer();
 				Debug.Log("Player Got Hit!!!!!!!!!");

@@ -19,6 +19,8 @@ public class SpearGun : MonoBehaviour {
 	float timeTofire = 0;
 	Transform firepoint;
 
+	public static bool gunShot;
+
 
 
 	// Use this for initialization
@@ -32,7 +34,7 @@ public class SpearGun : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (fireRate == 0) {
-			if (Input.GetKeyDown(KeyCode.Mouse0)) {
+			if (Input.GetKeyDown(KeyCode.Space)) {
 				fire ();
 			}
 		}
@@ -45,6 +47,7 @@ public class SpearGun : MonoBehaviour {
 	}
 
 	void fire () {
+		gunShot = true; 
 		Vector2 mousePostion = new Vector2 (Camera.main.ScreenToWorldPoint (Input.mousePosition).x, 
 		                                    Camera.main.ScreenToWorldPoint (Input.mousePosition).y);
 

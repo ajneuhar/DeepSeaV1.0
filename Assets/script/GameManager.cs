@@ -12,13 +12,15 @@ public class GameManager : MonoBehaviour {
 	public GameObject powerUp;
 	int givePowerUp;
 
-	//AudioSource audioSource;
-	//public AudioClip death;
+	public static bool deathSound;
+	public static int killCount;
+
+
 	
 
 	// Use this for initialization
 	void Start () {
-		//audioSource = GetComponent<AudioSource>();
+		killCount = 0; 
 		// Initilizae score.
 		score = 0;
 		givePowerUp = 100;
@@ -34,11 +36,13 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public static void KillPlayer (Player player) {
+		deathSound = true;
 		Debug.Log ("Player has Been Killed");
 		
 	}
 	
 	public static void KillEnemy (Enemy enemy) {
+		killCount++;
 		Destroy (enemy.gameObject);
 	}
 
