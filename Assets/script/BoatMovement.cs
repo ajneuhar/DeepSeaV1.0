@@ -35,21 +35,23 @@ public class BoatMovement : MonoBehaviour {
 		Vector3 dir;
 
 
-		if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) {
-			transform.Rotate(Vector3.forward * boatSpeed);
-			
-		} else if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) {
-			transform.Rotate(Vector3.forward * -boatSpeed);
-		} 
+		 
 
 		if ((Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))) {
                 dir = (front.position - transform.position) * boatSpeedMove;
                 rb.AddForce(dir);
 
-		} else if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow)) {
+			if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) {
+				transform.Rotate(Vector3.forward * boatSpeed);
+				
+			} else if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) {
+				transform.Rotate(Vector3.forward * -boatSpeed);
+			}
+
+		} /*else if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow)) {
 			dir = (back.position - transform.position) * boatSpeedMove;
 			rb.AddForce(dir);
-		}
+		}*/
 
         // making sure that the player won't be able to get out of the main screen.
 		if (transform.position.y > 65 || transform.position.y < -65 || transform.position.x > 100 || transform.position.x < -100)

@@ -37,7 +37,7 @@ public class SpearGun : MonoBehaviour {
 			}
 		}
 		else {
-			if (Input.GetKey (KeyCode.Mouse0) && Time.time > timeTofire) {
+			if (Input.GetKey (KeyCode.Space) && Time.time > timeTofire) {
 				timeTofire = Time.time + 1/fireRate;
 				fire ();
 			}

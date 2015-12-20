@@ -116,13 +116,16 @@ public class LevelManager : MonoBehaviour {
 		level++;
 		CalcNextLevelEnemys();
 		levelButton.active = true;
-	}
-
-
-	public void onClickNextLevel () {
+		yield return new WaitForSeconds(2f);
 		levelButton.active = false;
 		NextLevel();
 	}
+
+	/*
+	public void onClickNextLevel () {
+		levelButton.active = false;
+		NextLevel();
+	}*/
 
 	// Calculate the number of each enemy.
 	void CalcNextLevelEnemys() {
