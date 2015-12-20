@@ -21,6 +21,7 @@ public class LevelManager : MonoBehaviour {
     // Use this for initialization
     void Start () {
 		level = 1;
+		spear.WeaponUpdate(1);
 		CalcNextLevelEnemys();
 		NextLevel();
 		// setting the spear to the regular spear (layers: 1-2 damage: 5)

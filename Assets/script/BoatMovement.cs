@@ -28,6 +28,7 @@ public class BoatMovement : MonoBehaviour {
 		boatR = GetComponent<SpriteRenderer>();
 		audioSource = GetComponent<AudioSource>();
 		rb = GetComponent<Rigidbody2D>();
+
 	}
 	
 	// Update is called once per frame
