@@ -5,7 +5,8 @@ public class MoveBullet : MonoBehaviour {
 
 	public int weaponHitLayer;
 	public int damageToEnemy;
-	public int moveSpeed = 230; 
+	public int moveSpeed = 100; 
+
 
 	public Sprite regSpear;
 	public Sprite expSpear;
@@ -13,8 +14,7 @@ public class MoveBullet : MonoBehaviour {
 	SpriteRenderer spearR;
 	
 	void Start () {
-		spearR = this.GetComponent<SpriteRenderer>();
-		WeaponUpdate(1);
+		spearR = GetComponent<SpriteRenderer>();
 	}
 
 	// Update is called once per frame
@@ -51,6 +51,7 @@ public class MoveBullet : MonoBehaviour {
 	// layer 2 is the shallowest.
 	// layer 0 is the deepest.
 	public void WeaponUpdate(int weaponType){
+
 		switch(weaponType) {
 		case(1) :
 			weaponHitLayer = 1;

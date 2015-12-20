@@ -10,10 +10,15 @@ public class PowerUps : MonoBehaviour {
 	public MoveBullet spear;
 	private int playerRevive = 20;
 
+	private SpriteRenderer boatR;
+	public Sprite regBoat;
+	public Sprite untouchableBoat;
+
 
 
 	// Use this for initialization
 	void Start () {
+		boatR = boat.GetComponent<SpriteRenderer>();
 		RandomPowerUp();
 	}
 	
@@ -53,8 +58,10 @@ public class PowerUps : MonoBehaviour {
 
 		case(4) : 
 			player.SetUnTouchable(true);
+			boatR.sprite = untouchableBoat;
 			Debug.Log("is player untouchable =====> " + player.GetUnTouchable());
 			yield return new WaitForSeconds(10f);
+			boatR.sprite = regBoat;
 			player.SetUnTouchable(false);
 			Debug.Log("is player untouchable =====> " + player.GetUnTouchable());
 			Destroy(this.gameObject);
@@ -68,6 +75,7 @@ public class PowerUps : MonoBehaviour {
 		string tag = other.gameObject.tag;
 
 		if (tag == "Boat" ) {
+
 			transform.position = new Vector3(300f, 300f, 0f);
 			StartCoroutine(ActivatePowerUp());
 
