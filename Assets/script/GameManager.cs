@@ -35,6 +35,7 @@ public class GameManager : MonoBehaviour {
 
 	public static void KillPlayer (Player player) {
 		Debug.Log ("Player has Been Killed");
+		Application.LoadLevel("MainMenu");
 		
 	}
 	
