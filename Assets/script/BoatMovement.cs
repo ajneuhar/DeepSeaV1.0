@@ -14,11 +14,7 @@ public class BoatMovement : MonoBehaviour {
 	public Sprite regBoat;
 	SpriteRenderer boatR;
 
-	AudioSource audioSource;
-	public AudioClip boatOutOfBounds;
-	public AudioClip boatHitByEnemy;
-	public AudioClip death;
-   
+	public static int counter;
 
 	private Rigidbody2D rb;
  
