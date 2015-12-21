@@ -13,6 +13,7 @@ public class MoveBullet : MonoBehaviour {
 	public Sprite deepSpear;
 	SpriteRenderer spearR;
 	
+
 	void Start () {
 		spearR = GetComponent<SpriteRenderer>();
 	}

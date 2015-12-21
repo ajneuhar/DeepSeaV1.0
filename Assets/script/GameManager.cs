@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		killCount = 0; 
+
 		// Initilizae score.
 		score = 0;
 		givePowerUp = 100;

@@ -18,6 +18,10 @@ public class LevelManager : MonoBehaviour {
     // our spear
     public MoveBullet spear;
 
+	// For sound
+	public static bool openSound;
+	public static bool closeSound; 
+
     // Use this for initialization
     void Start () {
 		level = 1;
@@ -31,6 +35,7 @@ public class LevelManager : MonoBehaviour {
 
 	void NextLevel () {
 		levelOver = false; 
+		openSound = true; 
 		CreateEnemys();
 
 	}
@@ -39,12 +44,12 @@ public class LevelManager : MonoBehaviour {
 	void Update () {
 		if (GameManager.numOfEnemys == 0 && !levelOver) {
 			levelOver = true;
-            Debug.Log("Next level Bitch!!!!!!!!!");
-            StartCoroutine (LevelChange());
+			closeSound = true;
+			Debug.Log("Next level Bitch!!!!!!!!!");
+			StartCoroutine (LevelChange());
 		}
 	}
-
-
+	
 	void CreateEnemys() {
 		StartCoroutine(CreateEnemy1());
 		StartCoroutine(CreateEnemy2());
