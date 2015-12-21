@@ -1,0 +1,127 @@
+﻿using UnityEngine;
+using System.Collections;
+
+public class SoundManager : MonoBehaviour {
+
+	private AudioSource sourceAudio;
+	public AudioClip boatHitByEnemy;
+	public AudioClip tookPowerUp;
+	public AudioClip gotShield; 
+	public AudioClip death;
+	public AudioClip smallTalkStart1;
+	public AudioClip smallTalkStart2;
+	public AudioClip smallTalkStart3;
+	public AudioClip smallTalkClose1;
+	public AudioClip smallTalkClose2;
+	public AudioClip killEnemy1;
+	public AudioClip killEnemy2;
+	public AudioClip killEnemy3;
+	public AudioClip killEnemy4;
+	public AudioClip killEnemy5;
+	public AudioClip killEnemy6;
+	public AudioClip gunShot;
+	public AudioClip expArrow; 
+
+
+
+	// Use this for initialization
+	void Start () {
+		sourceAudio = GetComponent<AudioSource>();
+	
+	}
+	
+	// Update is called once per frame
+	void Update () {
+
+		if (GameManager.deathSound) {
+			if (BoatMovement.counter == 3) {
+				BoatMovement.counter = 0;
+			}
+			sourceAudio.PlayOneShot(death, 1f);
+			GameManager.deathSound = false;
+		}
+
+		if (BoatMovement.counter == 3) {
+			sourceAudio.PlayOneShot(boatHitByEnemy, 1f);
+			BoatMovement.counter = 0;
+		}
+
+		if (PowerUps.tookPowerUp) {
+			sourceAudio.PlayOneShot(tookPowerUp, 1f);
+			PowerUps.tookPowerUp = false; 
+		}
+
+		if (PowerUps.haveShield) {
+			sourceAudio.PlayOneShot(gotShield, 1f); 
+			PowerUps.haveShield = false;
+		}
+
+		if (LevelManager.openSound) {
+
+			switch(Random.Range(0, 3)) {
+			case(0):
+				sourceAudio.PlayOneShot(smallTalkStart1, 1f);
+				break;
+			case(1):
+				sourceAudio.PlayOneShot(smallTalkStart2, 1f);
+				break;
+			default:
+				sourceAudio.PlayOneShot(smallTalkStart3, 1f);
+				break;
+			}
+
+			LevelManager.openSound = false; 
+		}
+
+		if (LevelManager.closeSound) {
+			switch(Random.Range(0, 2)) {
+			case(0):
+				sourceAudio.PlayOneShot(smallTalkClose1, 1f);
+				break;
+			default:
+				sourceAudio.PlayOneShot(smallTalkClose2, 1f);
+				break;
+			}
+
+			LevelManager.closeSound = false; 
+		}
+
+		if (GameManager.killCount == 3) {
+
+			switch (Random.Range(0, 6)) {
+			case(0):
+				sourceAudio.PlayOneShot(killEnemy1, 1f);
+				break;
+			case(1):
+				sourceAudio.PlayOneShot(killEnemy2, 1f);
+				break;
+			case(2):
+				sourceAudio.PlayOneShot(killEnemy3, 1f);
+				break;
+			case(3):
+				sourceAudio.PlayOneShot(killEnemy4, 1f);
+				break;
+			case(4):
+				sourceAudio.PlayOneShot(killEnemy5, 1f);
+				break;
+			default:
+				sourceAudio.PlayOneShot(killEnemy6, 1f);
+				break;
+			}
+			GameManager.killCount = 0;
+		}
+
+		if (SpearGun.gunShot) {
+			sourceAudio.PlayOneShot(gunShot, 1f);
+			SpearGun.gunShot = false;
+		}
+
+		if (Enemy.spearHitEnemy) {
+			if (PowerUps.powerUp == 2){
+				sourceAudio.PlayOneShot(expArrow, 1f);
+				Enemy.spearHitEnemy = false;
+			}
+		}
+
+	}
+}

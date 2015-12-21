@@ -3,7 +3,7 @@ using System.Collections;
 
 public class PowerUps : MonoBehaviour {
 
-	int powerUp;
+	public static int powerUp;
 	float powerUpTime;
 	public GameObject boat;
 	public Player player;
@@ -13,6 +13,10 @@ public class PowerUps : MonoBehaviour {
 	private SpriteRenderer boatR;
 	public Sprite regBoat;
 	public Sprite untouchableBoat;
+
+	//For sound
+	public static bool tookPowerUp;
+	public static bool haveShield; 
 
 
 
@@ -57,6 +61,7 @@ public class PowerUps : MonoBehaviour {
 			break;
 
 		case(4) : 
+			haveShield = true; 
 			player.SetUnTouchable(true);
 			boatR.sprite = untouchableBoat;
 			Debug.Log("is player untouchable =====> " + player.GetUnTouchable());
@@ -76,6 +81,7 @@ public class PowerUps : MonoBehaviour {
 
 		if (tag == "Boat" ) {
 
+			tookPowerUp = true; 
 			transform.position = new Vector3(300f, 300f, 0f);
 			StartCoroutine(ActivatePowerUp());
 

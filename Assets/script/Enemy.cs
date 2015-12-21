@@ -11,9 +11,13 @@ public class Enemy : MonoBehaviour {
 	}
 	
 	public EnemyStats enemyStats = new EnemyStats();
+
+	//For Sound
+	public static bool spearHitEnemy;
 	
 	public void DamageEnemy (int damage) {
-		
+
+		spearHitEnemy = true; 
 		enemyStats.health -= damage;
 		
 		if (enemyStats.health <= 0) {
