@@ -14,13 +14,7 @@ public class MoveBullet : MonoBehaviour {
 	SpriteRenderer spearR;
 
 
-
 	
-
-	void Start () {
-		spearR = GetComponent<SpriteRenderer>();
-	}
-
 
 	// Update is called once per frame
 	void Update () {
@@ -56,7 +50,7 @@ public class MoveBullet : MonoBehaviour {
 	// layer 2 is the shallowest.
 	// layer 0 is the deepest.
 	public void WeaponUpdate(int weaponType){
-
+		spearR = GetComponent<SpriteRenderer>();
 
 		switch(weaponType) {
 		case(1) :

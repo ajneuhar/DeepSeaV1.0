@@ -14,7 +14,7 @@ public class PowerUpMovement : MonoBehaviour {
 	}
 
 	IEnumerator Uprising(){
-		for (int i = 0; i < 2; i++) {
+		for (int i = 0; i < 3; i++) {
 			yield return new WaitForSeconds(1.5f);
 			powerR.sortingOrder++;
 		}
