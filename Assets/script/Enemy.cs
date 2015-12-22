@@ -18,8 +18,10 @@ public class Enemy : MonoBehaviour {
 	//For Animation
     Animator anim;
 
+
 	void Start () {
 		anim = GetComponent<Animator>();
+
 	}
 	
 	public void DamageEnemy (int damage) {
@@ -27,24 +29,39 @@ public class Enemy : MonoBehaviour {
 		spearHitEnemy = true; 
 		enemyStats.health -= damage;
 
+		if (tag == "enemy3") {
+			StartCoroutine(WaitForHitAnimation());
+		}
+
+
 		if (enemyStats.health <= 0) {
-			//StartCoroutine(DeathAnimation());
 			anim.SetBool("death", true);
-			GameManager.numOfEnemys--;
-			GameManager.KillEnemy(this);
+
+			GetComponent<Collider2D>().isTrigger = true;
+
+
+			StartCoroutine(DeathAnimation());
 			AddScore();
 		} 
 
 
 	}
 
-	/*
+	IEnumerator WaitForHitAnimation() {
+		anim.SetBool("enemy3Hit", true);
+		yield return new WaitForSeconds(2f);
+		anim.SetBool("enemy3Hit", false);
+	}
+
+
 	IEnumerator DeathAnimation () {
 		Debug.Log("im here");
-
+	
 		yield return new WaitForSeconds(2f);
+		GameManager.numOfEnemys--;
+		GameManager.KillEnemy(this);
 
-	}*/
+	}
 
     public void EnemyTouchPlayer ()   {
         //TODO: kills the enemy when this function is called.

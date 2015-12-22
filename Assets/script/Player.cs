@@ -7,6 +7,8 @@ public class Player : MonoBehaviour {
 	bool unTouchable = false;
 
 
+
+
 	[System.Serializable]  
 	public class PlayerStats {
 		public int health = 100;
@@ -29,6 +31,7 @@ public class Player : MonoBehaviour {
 			Debug.Log("Player UnTouchable mother fucker!!!!!!! " + unTouchable);
 			return;
 		}
+	
 
 		playerStats.health -= damage;
 
