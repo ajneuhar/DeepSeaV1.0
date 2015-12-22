@@ -16,7 +16,7 @@ public class Enemy : MonoBehaviour {
 	public static bool spearHitEnemy;
 
 	//For Animation
-	public static Animator anim;
+    Animator anim;
 
 	void Start () {
 		anim = GetComponent<Animator>();
@@ -28,14 +28,23 @@ public class Enemy : MonoBehaviour {
 		enemyStats.health -= damage;
 
 		if (enemyStats.health <= 0) {
+			//StartCoroutine(DeathAnimation());
+			anim.SetBool("death", true);
 			GameManager.numOfEnemys--;
-			anim.SetBool("Death", true);
 			GameManager.KillEnemy(this);
 			AddScore();
 		} 
 
 
 	}
+
+	/*
+	IEnumerator DeathAnimation () {
+		Debug.Log("im here");
+
+		yield return new WaitForSeconds(2f);
+
+	}*/
 
     public void EnemyTouchPlayer ()   {
         //TODO: kills the enemy when this function is called.
