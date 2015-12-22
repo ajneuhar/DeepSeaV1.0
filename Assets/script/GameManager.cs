@@ -39,7 +39,7 @@ public class GameManager : MonoBehaviour {
 	public static void KillPlayer (Player player) {
 		deathSound = true;
 		Debug.Log ("Player has Been Killed");
-		Application.LoadLevel("MainMenu");
+		//Application.LoadLevel("MainMenu");
 		
 	}
 	
@@ -50,8 +50,9 @@ public class GameManager : MonoBehaviour {
 
 
 	IEnumerator CreatePowerUp() {
+		Vector3 temp = new Vector3(Random.Range(-70, 70), Random.Range(-54, 54), 0f);
 		yield return new WaitForSeconds(2f);
-		Instantiate(powerUp, new Vector3(13f, 50f, 0f), Quaternion.identity);
+		Instantiate(powerUp, temp, Quaternion.identity);
 	}
 
 

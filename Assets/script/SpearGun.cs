@@ -23,8 +23,11 @@ public class SpearGun : MonoBehaviour {
 
 
 
+
+
 	// Use this for initialization
 	void Awake () {
+		fireRate = 2;
 		firepoint = transform.FindChild("firepoint");
 		if (firepoint == null) {
 			Debug.LogError("No firepoint?! What?!");

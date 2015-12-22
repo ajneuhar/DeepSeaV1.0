@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class GUIManager : MonoBehaviour {
 	
 	public Image bar; 
+
 	
 
 	// Update is called once per frame

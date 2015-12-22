@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class MoveBullet : MonoBehaviour {
 
@@ -13,13 +14,19 @@ public class MoveBullet : MonoBehaviour {
 	public Sprite deepSpear;
 	SpriteRenderer spearR;
 
+	// For changing CurrentArrow image in the GUI.
+	public Image CurrentArrow;
+	public Sprite HeapDeepArrow;
+	public Sprite HeapRegArrow;
+	public Sprite HeapExpArrow;
+
 
 	
 
 	// Update is called once per frame
 	void Update () {
 		transform.Translate (Vector3.right * Time.deltaTime * moveSpeed);
-		Destroy (gameObject, 1);
+		Destroy (gameObject, 2);
 	}
 
 
@@ -51,24 +58,28 @@ public class MoveBullet : MonoBehaviour {
 	// layer 0 is the deepest.
 	public void WeaponUpdate(int weaponType){
 		spearR = GetComponent<SpriteRenderer>();
+		CurrentArrow = GameObject.Find("CurrentArrow").GetComponent<Image>();
 
 		switch(weaponType) {
 		case(1) :
 			weaponHitLayer = 1;
 			damageToEnemy = 5;
 			spearR.sprite = regSpear; 
+			CurrentArrow.sprite = HeapRegArrow;
 			return;
 			
 		case(2) :
 			weaponHitLayer = 1;
 			damageToEnemy = 10;
 			spearR.sprite = expSpear; 
+			CurrentArrow.sprite = HeapExpArrow;
 			return;
 			
 		case(3) :
 			weaponHitLayer = 0;
 			damageToEnemy = 10;
 			spearR.sprite = deepSpear; 
+			CurrentArrow.sprite = HeapDeepArrow;
 			return;
 		}
 	}

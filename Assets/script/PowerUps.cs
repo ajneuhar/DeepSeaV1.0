@@ -1,18 +1,30 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+
 public class PowerUps : MonoBehaviour {
 
 	public static int powerUp;
 	float powerUpTime;
-	public GameObject boat;
-	public Player player;
+
+	// For changing the player untouchable.
+	private Player player;
+	// For update the spear.
 	public MoveBullet spear;
 	private int playerRevive = 20;
 
+
+	// For changing the boat sprite.
 	private SpriteRenderer boatR;
 	public Sprite regBoat;
 	public Sprite untouchableBoat;
+
+	// For changing Fire Rate.
+	private SpearGun spearGun;
+
+	public GameObject boxExplode;
+
+
 
 	//For sound
 	public static bool tookPowerUp;
@@ -22,14 +34,17 @@ public class PowerUps : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		boatR = boat.GetComponent<SpriteRenderer>();
+		boatR = GameObject.Find("Boat").GetComponent<SpriteRenderer>();
+		player = GameObject.Find("Player").GetComponent<Player>();
+		spearGun = GameObject.Find("spearGun").GetComponent<SpearGun>();
+
 		RandomPowerUp();
 	}
 	
 
 	private void RandomPowerUp() {
 
-		powerUp = Random.Range(1, 5);
+		powerUp = Random.Range(1, 6);
 		powerUpTime = Random.Range(20, 31);
 	}
 
@@ -61,17 +76,29 @@ public class PowerUps : MonoBehaviour {
 			break;
 
 		case(4) : 
+			boatR.sprite = untouchableBoat;
 			haveShield = true; 
 			player.SetUnTouchable(true);
-			boatR.sprite = untouchableBoat;
 			Debug.Log("is player untouchable =====> " + player.GetUnTouchable());
+	
 			yield return new WaitForSeconds(10f);
+
 			boatR.sprite = regBoat;
 			player.SetUnTouchable(false);
 			Debug.Log("is player untouchable =====> " + player.GetUnTouchable());
 			Destroy(this.gameObject);
 			break;
+
+		case(5) :
+			spearGun.fireRate = 4;
+
+			yield return new WaitForSeconds(powerUpTime);
+
+			spearGun.fireRate = 2;
+			break;
 		}
+
+
 	}
 
 
@@ -82,11 +109,15 @@ public class PowerUps : MonoBehaviour {
 		if (tag == "Boat" ) {
 
 			tookPowerUp = true; 
-			transform.position = new Vector3(300f, 300f, 0f);
+			Object box = Instantiate(boxExplode, transform.position, Quaternion.identity);
+			transform.position = new Vector3 (1000f, 0f, 0f);
+			Destroy(box, 2f);
 			StartCoroutine(ActivatePowerUp());
 
 		}
 	}
+
+
 
 
 

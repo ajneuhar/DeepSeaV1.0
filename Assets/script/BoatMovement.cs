@@ -14,6 +14,8 @@ public class BoatMovement : MonoBehaviour {
 	public Sprite regBoat;
 	SpriteRenderer boatR;
 
+	public float stopRotate = 0.1f;
+
 	public static int counter;
 
 	private Rigidbody2D rb;
@@ -28,8 +30,20 @@ public class BoatMovement : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
 		Vector3 dir;
+
+		if (rb.velocity.magnitude >= stopRotate) {
+
+			if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) {
+				transform.Rotate(Vector3.forward * boatSpeed);
+
+				
+			} else if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) {
+				transform.Rotate(Vector3.forward * -boatSpeed);
+			}
+		}
+
 
 
 		 
@@ -38,17 +52,12 @@ public class BoatMovement : MonoBehaviour {
                 dir = (front.position - transform.position) * boatSpeedMove;
                 rb.AddForce(dir);
 
-			if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) {
-				transform.Rotate(Vector3.forward * boatSpeed);
-				
-			} else if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) {
-				transform.Rotate(Vector3.forward * -boatSpeed);
-			}
 
-		} /*else if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow)) {
-			dir = (back.position - transform.position) * boatSpeedMove;
+
+		} else if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow)) {
+			dir = (back.position - transform.position) * (boatSpeedMove / 2);
 			rb.AddForce(dir);
-		}*/
+		}
 
       
 
@@ -56,7 +65,7 @@ public class BoatMovement : MonoBehaviour {
 
 
 
-
+	/*
 	IEnumerator OutOfBounds() {
 
 		transform.position = new Vector3 (0f, 0f, 0f);
@@ -74,7 +83,7 @@ public class BoatMovement : MonoBehaviour {
 			
 		player.SetUnTouchable(false);
 	}
-
+	*/
 
 
 	// Activate functhion when something touched the boat.
@@ -102,13 +111,18 @@ public class BoatMovement : MonoBehaviour {
 				counter++;
 				player.DamagePlayer(damageToPlayer);
                 enemy.EnemyTouchPlayer();
-				Debug.Log("Player Got Hit!!!!!!!!!");
+				Debug.Log("Player Got Hit!!!!!!!!! Is UnTouchable?????  " + player.GetUnTouchable());
 				if(!player.GetUnTouchable()) {
 					StartCoroutine(BlinkBoat());
 				}
 			}
-		} else if (tag == "wall") {
-			rb.velocity = -rb.velocity;
+		} else if (tag == "wall") { 
+			// change the movement diraction of the boat if touching a wall.
+			if (other.gameObject.name == "RightWall" || other.gameObject.name == "LeftWall") {
+				rb.velocity = new Vector2(-rb.velocity.x, rb.velocity.y);
+			} else {
+				rb.velocity = new Vector2(rb.velocity.x, -rb.velocity.y);
+			}
 		}
 	}
 
