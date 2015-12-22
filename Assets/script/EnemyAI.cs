@@ -42,23 +42,23 @@ public class EnemyAI : MonoBehaviour {
 	float alphaColor;
 	
 
+
 	void Start () {
 		target = GameObject.Find("Boat").GetComponent<Transform>();
 		StartCoroutine(RandomLayerUp());
 		sprite = GetComponent<SpriteRenderer>();
-
 		Path0();
 	}
 
 	IEnumerator RandomLayerUp() {
 		yield return new WaitForSeconds(Random.Range(6, 11));
-		iTween.ScaleTo(this.gameObject, new Vector3(6f, 6f, 6f), 2f);
+		iTween.ScaleTo(this.gameObject, new Vector3(25f, 25f, 25f), 2f);
 		sprite.sortingOrder++;
 		//iTween.ColorTo(this.gameObject, new Color(100f, 100f, 100f), 1f);
 		// player and enemy collide and wont overlap.
 		GetComponent<BoxCollider2D>().isTrigger = false;
 		yield return new WaitForSeconds(Random.Range(4, 7));
-		iTween.ScaleTo(this.gameObject, new Vector3(7f, 7f, 7f), 1f);
+		iTween.ScaleTo(this.gameObject, new Vector3(30f, 30f, 30f), 1f);
 		sprite.sortingOrder++;
 		//iTween.ColorTo(this.gameObject, new Color(100f, 100f, 100f), 1f);
 	}

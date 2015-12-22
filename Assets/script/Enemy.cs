@@ -14,14 +14,22 @@ public class Enemy : MonoBehaviour {
 
 	//For Sound
 	public static bool spearHitEnemy;
+
+	//For Animation
+	public static Animator anim;
+
+	void Start () {
+		anim = GetComponent<Animator>();
+	}
 	
 	public void DamageEnemy (int damage) {
 
 		spearHitEnemy = true; 
 		enemyStats.health -= damage;
-		
+
 		if (enemyStats.health <= 0) {
 			GameManager.numOfEnemys--;
+			anim.SetBool("Death", true);
 			GameManager.KillEnemy(this);
 			AddScore();
 		} 

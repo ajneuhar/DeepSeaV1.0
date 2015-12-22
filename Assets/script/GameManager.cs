@@ -12,8 +12,12 @@ public class GameManager : MonoBehaviour {
 	public GameObject powerUp;
 	int givePowerUp;
 
+	//For Sound
 	public static bool deathSound;
 	public static int killCount;
+	
+
+	 
 
 
 	
@@ -21,7 +25,6 @@ public class GameManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		killCount = 0; 
-
 		// Initilizae score.
 		score = 0;
 		givePowerUp = 100;
