@@ -20,7 +20,6 @@ public class LevelManager : MonoBehaviour {
 
 	// For sound
 	public static bool openSound;
-	public static bool closeSound; 
 
     // Use this for initialization
     void Start () {
@@ -44,7 +43,6 @@ public class LevelManager : MonoBehaviour {
 	void Update () {
 		if (GameManager.numOfEnemys == 0 && !levelOver) {
 			levelOver = true;
-			closeSound = true;
 			Debug.Log("Next level Bitch!!!!!!!!!");
 			StartCoroutine (LevelChange());
 		}

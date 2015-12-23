@@ -57,17 +57,20 @@ public class Enemy : MonoBehaviour {
 	IEnumerator DeathAnimation () {
 		Debug.Log("im here");
 	
-		yield return new WaitForSeconds(2f);
+		yield return new WaitForSeconds(1f);
 		GameManager.numOfEnemys--;
 		GameManager.KillEnemy(this);
-
 	}
 
     public void EnemyTouchPlayer ()   {
         //TODO: kills the enemy when this function is called.
+		anim.SetBool("death", true);
+
+		// Yahav do we need to turn off trigger?
+		// GetComponent<Collider2D>().isTrigger = false;
         Debug.Log("need to kill enemy");
 		GameManager.numOfEnemys--;
-        Destroy(this.gameObject);
+        Destroy(this.gameObject, 1f);
     }
 
 

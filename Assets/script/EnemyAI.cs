@@ -52,15 +52,40 @@ public class EnemyAI : MonoBehaviour {
 
 	IEnumerator RandomLayerUp() {
 		yield return new WaitForSeconds(Random.Range(6, 11));
-		iTween.ScaleTo(this.gameObject, new Vector3(25f, 25f, 25f), 2f);
+
+		//for scaling between layers.
+		switch(this.tag) {
+		case("enemy1"):
+			iTween.ScaleTo(this.gameObject, new Vector3(20f, 20f, 20f), 2f);
+			break;
+		case("enemy2"):
+			iTween.ScaleTo(this.gameObject, new Vector3(25f, 25f, 25f), 2f);
+			break;
+		default:
+			iTween.ScaleTo(this.gameObject, new Vector3(30f, 30f, 30f), 2f);
+			break;
+		}
+
 		sprite.sortingOrder++;
-		//iTween.ColorTo(this.gameObject, new Color(100f, 100f, 100f), 1f);
+
 		// player and enemy collide and wont overlap.
 		GetComponent<BoxCollider2D>().isTrigger = false;
 		yield return new WaitForSeconds(Random.Range(4, 7));
-		iTween.ScaleTo(this.gameObject, new Vector3(30f, 30f, 30f), 1f);
+
+		//for scaling between layers.
+		switch(this.tag) {
+		case("enemy1"):
+			iTween.ScaleTo(this.gameObject, new Vector3(25f, 25f, 25f), 2f);
+			break;
+		case("enemy2"):
+			iTween.ScaleTo(this.gameObject, new Vector3(30f, 30f, 30f), 2f);
+			break;
+		default:
+			iTween.ScaleTo(this.gameObject, new Vector3(35f, 35f, 35f), 2f);
+			break;
+		}
+
 		sprite.sortingOrder++;
-		//iTween.ColorTo(this.gameObject, new Color(100f, 100f, 100f), 1f);
 	}
 
 
@@ -68,32 +93,6 @@ public class EnemyAI : MonoBehaviour {
 		iTween.MoveTo(this.gameObject ,iTween.Hash("path", iTweenPath.GetPath(LevelManager.startPath), "speed", 50,
 		                                           "easetype", iTween.EaseType.easeInOutSine,  "onComplete", "SeekPlayer"));
 	}
-
-	/*
-	void Path1() {
-        // player and enemy collide and wont overlap.
-        // GetComponent<BoxCollider2D>().isTrigger = false;
-		iTween.MoveTo(this.gameObject ,iTween.Hash("path", iTweenPath.GetPath(LevelManager.secondPath), "speed", 50, 
-		                                           "easetype", iTween.EaseType.easeInOutSine, "onComplete", "SeekPlayer"));
-
-	}*/
-
-	/*
-	string ChoosePath () {
-		switch (Random.Range(0, 5)) {
-		case(0): 
-			return "enemyPath1";
-		case(1):
-			return "enemyPath2";
-		case(2):
-			return "enemyPath3";
-		case(3):
-			return "enemyPath4";
-		default:
-			return "enemyPath5";
-
-		}
-	}*/
 
 
 	public void SeekPlayer () {

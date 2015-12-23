@@ -4,31 +4,41 @@ using System.Collections;
 public class SoundManager : MonoBehaviour {
 
 	private AudioSource sourceAudio;
+
+	//Boat
 	public AudioClip boatHitByEnemy;
 	public AudioClip tookPowerUp;
 	public AudioClip gotShield; 
 	public AudioClip death;
+
+	//Player
 	public AudioClip smallTalkStart1;
 	public AudioClip smallTalkStart2;
 	public AudioClip smallTalkStart3;
-	public AudioClip smallTalkClose1;
-	public AudioClip smallTalkClose2;
 	public AudioClip killEnemy1;
 	public AudioClip killEnemy2;
 	public AudioClip killEnemy3;
 	public AudioClip killEnemy4;
 	public AudioClip killEnemy5;
 	public AudioClip killEnemy6;
+	public AudioClip killEnemy7;
+	public AudioClip killEnemy8;
+
+	//Weapon
 	public AudioClip gunShot;
 	public AudioClip expArrow;
+
 	//PowerUps
-	//Reduce end level sound
-	//movie scenes music
+	public AudioClip gotLife;
+	public AudioClip gotExpArrows;
+	public AudioClip gotDepthArrows; 
+	public AudioClip gotShield1;
+	public AudioClip gotMachineGun;
+
 	//creature sounds 
-	// enemy paths!!!!!!!!!!!!!!!!
-	// powerup itween
+	public AudioClip enemyDeath; 
 
-
+	//movie scenes music
 
 
 	// Use this for initialization
@@ -80,22 +90,10 @@ public class SoundManager : MonoBehaviour {
 			LevelManager.openSound = false; 
 		}
 
-		if (LevelManager.closeSound) {
-			switch(Random.Range(0, 2)) {
-			case(0):
-				sourceAudio.PlayOneShot(smallTalkClose1, 1f);
-				break;
-			default:
-				sourceAudio.PlayOneShot(smallTalkClose2, 1f);
-				break;
-			}
-
-			LevelManager.closeSound = false; 
-		}
 
 		if (GameManager.killCount == 3) {
 
-			switch (Random.Range(0, 6)) {
+			switch (Random.Range(0, 8)) {
 			case(0):
 				sourceAudio.PlayOneShot(killEnemy1, 1f);
 				break;
@@ -111,8 +109,14 @@ public class SoundManager : MonoBehaviour {
 			case(4):
 				sourceAudio.PlayOneShot(killEnemy5, 1f);
 				break;
-			default:
+			case(5):
 				sourceAudio.PlayOneShot(killEnemy6, 1f);
+				break;
+			case(6):
+				sourceAudio.PlayOneShot(killEnemy7, 1f);
+				break;
+			default:
+				sourceAudio.PlayOneShot(killEnemy8, 1f);
 				break;
 			}
 			GameManager.killCount = 0;
@@ -129,6 +133,37 @@ public class SoundManager : MonoBehaviour {
 				Enemy.spearHitEnemy = false;
 			}
 		}
+
+		if (PowerUps.gotLife) {
+			sourceAudio.PlayOneShot(gotLife, 1f);
+			PowerUps.gotLife = false;
+		}
+
+		if (PowerUps.gotExpArrows) {
+			sourceAudio.PlayOneShot(gotExpArrows, 1f);
+			PowerUps.gotExpArrows = false;
+		}
+
+		if (PowerUps.gotDepthArrows) {
+			sourceAudio.PlayOneShot(gotDepthArrows, 1f);
+			PowerUps.gotDepthArrows = false;
+		}
+
+		if (PowerUps.gotShield) {
+			sourceAudio.PlayOneShot(gotShield1, 1f);
+			PowerUps.gotShield = false;
+		}
+
+		if (PowerUps.gotMachineGun) {
+			sourceAudio.PlayOneShot(gotMachineGun, 1f);
+			PowerUps.gotMachineGun = false;
+		}
+
+		if (GameManager.enemyDeath) {
+			sourceAudio.PlayOneShot(enemyDeath, 1f);
+			GameManager.enemyDeath = false;
+		}
+
 
 	}
 }
