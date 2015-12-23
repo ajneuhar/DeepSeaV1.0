@@ -20,7 +20,14 @@ public class SoundManager : MonoBehaviour {
 	public AudioClip killEnemy5;
 	public AudioClip killEnemy6;
 	public AudioClip gunShot;
-	public AudioClip expArrow; 
+	public AudioClip expArrow;
+	//PowerUps
+	//Reduce end level sound
+	//movie scenes music
+	//creature sounds 
+	// enemy paths!!!!!!!!!!!!!!!!
+	// powerup itween
+
 
 
 
