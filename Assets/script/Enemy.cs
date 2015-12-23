@@ -18,9 +18,35 @@ public class Enemy : MonoBehaviour {
 	//For Animation
     Animator anim;
 
+	// For enemy to ignore walls.
+	Collider2D leftWall;
+	Collider2D rightWall;
+	Collider2D upperWall;
+	Collider2D lowerWall;
+	Collider2D enemyCollider2D;
+
+
+
+
 
 	void Start () {
 		anim = GetComponent<Animator>();
+		// Ignore walls.
+		enemyCollider2D = GetComponent<Collider2D>();
+
+		leftWall = GameObject.Find("LeftWall").GetComponent<Collider2D>();
+		Physics2D.IgnoreCollision(leftWall, enemyCollider2D);
+
+		rightWall = GameObject.Find("RightWall").GetComponent<Collider2D>();
+		Physics2D.IgnoreCollision(rightWall, enemyCollider2D);
+
+		upperWall = GameObject.Find("UpperWall").GetComponent<Collider2D>();
+		Physics2D.IgnoreCollision(upperWall, enemyCollider2D);
+
+		lowerWall = GameObject.Find("LowerWall").GetComponent<Collider2D>();
+		Physics2D.IgnoreCollision(lowerWall, enemyCollider2D);
+
+
 
 	}
 	
@@ -29,28 +55,31 @@ public class Enemy : MonoBehaviour {
 		spearHitEnemy = true; 
 		enemyStats.health -= damage;
 
-		if (tag == "enemy3") {
-			StartCoroutine(WaitForHitAnimation());
-		}
-
 
 		if (enemyStats.health <= 0) {
 			anim.SetBool("death", true);
-
-			GetComponent<Collider2D>().isTrigger = true;
-
+			enemyCollider2D.isTrigger = true;
+			iTween.Stop(this.gameObject);
+			Rigidbody2D enemyR = GetComponent<Rigidbody2D>();
+			enemyR.constraints = RigidbodyConstraints2D.FreezePosition;
 
 			StartCoroutine(DeathAnimation());
 			AddScore();
 		} 
 
+		if ((tag == "enemy3" || tag == "enemy2") && !anim.GetBool("death")) {
+
+			StartCoroutine(WaitForHitAnimation());
+		}
+		
 
 	}
 
 	IEnumerator WaitForHitAnimation() {
-		anim.SetBool("enemy3Hit", true);
-		yield return new WaitForSeconds(2f);
-		anim.SetBool("enemy3Hit", false);
+		anim.SetBool("enemyHit", true);
+
+		yield return new WaitForSeconds(1f);
+		anim.SetBool("enemyHit", false);
 	}
 
 
@@ -58,7 +87,7 @@ public class Enemy : MonoBehaviour {
 		Debug.Log("im here");
 	
 		yield return new WaitForSeconds(2f);
-		GameManager.numOfEnemys--;
+
 		GameManager.KillEnemy(this);
 
 	}

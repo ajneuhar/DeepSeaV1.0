@@ -50,7 +50,7 @@ public class GameManager : MonoBehaviour {
 	
 	public static void KillEnemy (Enemy enemy) {
 		killCount++;
-
+		numOfEnemys--;
 
 		Destroy (enemy.gameObject);
 	}

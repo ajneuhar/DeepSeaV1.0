@@ -88,7 +88,7 @@ public class BoatMovement : MonoBehaviour {
 
 	// Activate functhion when something touched the boat.
 	// Dosen't damage player if enemy is in layer 0.
-	void OnCollisionEnter2D (Collision2D other) {
+	void OnCollisionStay2D (Collision2D other) {
 
 		string tag = other.gameObject.tag;
 
@@ -116,7 +116,15 @@ public class BoatMovement : MonoBehaviour {
 					StartCoroutine(BlinkBoat());
 				}
 			}
-		} else if (tag == "wall") { 
+		}
+	}
+
+
+	void OnCollisionEnter2D (Collision2D other) {
+		
+		string tag = other.gameObject.tag;
+		if (tag == "wall") { 
+			
 			// change the movement diraction of the boat if touching a wall.
 			if (other.gameObject.name == "RightWall" || other.gameObject.name == "LeftWall") {
 				rb.velocity = new Vector2(-rb.velocity.x, rb.velocity.y);
@@ -125,6 +133,7 @@ public class BoatMovement : MonoBehaviour {
 			}
 		}
 	}
+
 
 	IEnumerator BlinkBoat() {
 		for (int i = 0; i < 3; i++) {

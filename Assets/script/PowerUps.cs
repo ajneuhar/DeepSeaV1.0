@@ -59,6 +59,7 @@ public class PowerUps : MonoBehaviour {
 		
 		case(2) :
 			spear.WeaponUpdate(2);
+
 			Debug.Log("Update Weapon To ==============>" + spear.weaponHitLayer + "  " + spear.damageToEnemy);
 			Debug.Log(Time.time);
 			yield return new WaitForSeconds(powerUpTime);
@@ -103,7 +104,7 @@ public class PowerUps : MonoBehaviour {
 
 
 	//TODO: 
-	void OnCollisionEnter2D (Collision2D other) {
+	void OnCollisionStay2D (Collision2D other) {
 		string tag = other.gameObject.tag;
 
 		if (tag == "Boat" ) {
