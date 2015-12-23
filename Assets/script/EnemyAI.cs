@@ -84,7 +84,6 @@ public class EnemyAI : MonoBehaviour {
 			iTween.ScaleTo(this.gameObject, new Vector3(35f, 35f, 35f), 2f);
 			break;
 		}
-
 		sprite.sortingOrder++;
 	}
 

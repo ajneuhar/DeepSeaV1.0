@@ -22,10 +22,9 @@ public class PowerUps : MonoBehaviour {
 	// For changing Fire Rate.
 	private SpearGun spearGun;
 
-	public GameObject boxExplode;
-
-
-
+	//For Animation
+	Animator anim;
+	
 	//For sound
 	public static bool tookPowerUp;
 	public static bool haveShield;
@@ -43,6 +42,7 @@ public class PowerUps : MonoBehaviour {
 		boatR = GameObject.Find("Boat").GetComponent<SpriteRenderer>();
 		player = GameObject.Find("Player").GetComponent<Player>();
 		spearGun = GameObject.Find("spearGun").GetComponent<SpearGun>();
+		anim = GetComponent<Animator>();
 
 		RandomPowerUp();
 	}
@@ -120,9 +120,17 @@ public class PowerUps : MonoBehaviour {
 		if (tag == "Boat" ) {
 
 			tookPowerUp = true; 
+
+			anim.SetBool("tookPowerUp", true);
+
+			GetComponent<Collider2D>().isTrigger = true;
+
+			/*
 			Object box = Instantiate(boxExplode, transform.position, Quaternion.identity);
 			transform.position = new Vector3 (1000f, 0f, 0f);
 			Destroy(box, 2f);
+			*/
+
 			StartCoroutine(ActivatePowerUp());
 
 		}

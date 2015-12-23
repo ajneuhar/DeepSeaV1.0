@@ -18,8 +18,8 @@ public class PowerUpMovement : MonoBehaviour {
 
 	IEnumerator Uprising(){
 		for (int i = 0; i < 3; i++) {
-			yield return new WaitForSeconds(1.5f);
-			iTween.ScaleTo(this.gameObject, new Vector3(scaleToX, scaleToY, 0f), 2f);
+			yield return new WaitForSeconds(1f);
+			iTween.ScaleTo(this.gameObject, new Vector3(scaleToX, scaleToY, 0f), 10f);
 			powerR.sortingOrder++;
 			scaleToX += 1.5f;
 			scaleToY += 1.5f;

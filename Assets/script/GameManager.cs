@@ -18,12 +18,6 @@ public class GameManager : MonoBehaviour {
 	public static bool enemyDeath;
 
 	public GameObject enemyO;
-	
-
-	 
-
-
-	
 
 	// Use this for initialization
 	void Start () {
