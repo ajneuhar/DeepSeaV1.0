@@ -15,14 +15,9 @@ public class GameManager : MonoBehaviour {
 	//For Sound
 	public static bool deathSound;
 	public static int killCount;
+	public static bool enemyDeath;
 
 	public GameObject enemyO;
-	
-
-	 
-
-
-	
 
 	// Use this for initialization
 	void Start () {
@@ -50,7 +45,11 @@ public class GameManager : MonoBehaviour {
 	
 	public static void KillEnemy (Enemy enemy) {
 		killCount++;
+<<<<<<< HEAD
 		numOfEnemys--;
+=======
+		enemyDeath = true;
+>>>>>>> origin/master
 
 		Destroy (enemy.gameObject);
 	}
